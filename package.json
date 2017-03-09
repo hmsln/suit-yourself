@@ -1,7 +1,7 @@
 {
   "name": "suit-yourself",
   "version": "1.0.0",
-  "description": "A node.js module that allows you to selectively load and pass parameters to submodules.",
+  "description": "A node.js module that allows you to selectively load and pass parameters to submodules",
   "keywords": [
     "submodule",
     "loader"
@@ -15,6 +15,10 @@
   },
   "engines": {
     "node": "4.1.2"
+  },
+  "repository": {
+  	"type": "git",
+  	"url": "https://github.com/hmsln/suit-yourself.git"
   },
   "author": "Hubert Maslin <hubert.maslin@gmail.com>",
   "license": "MIT"
