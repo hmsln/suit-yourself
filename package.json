@@ -1,7 +1,7 @@
 {
   "name": "suit-yourself",
   "version": "1.0.0",
-  "description": "Submodule loader with parameter passing.",
+  "description": "A node.js module that allows you to selectively load and pass parameters to submodules.",
   "keywords": [
     "submodule",
     "loader"
