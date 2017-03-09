@@ -2,7 +2,7 @@
 
 ```suit-yourself``` is an open source module that allows you to load submodules selectively from a source folder, and to pass parameters to them.
 
-** Example **
+## Example
 ```javascript
 var suitYourself = require('suit-yourself');
 
@@ -31,7 +31,7 @@ var toRequire = [
 //import the submodules
 var submodules = suitYourself(path, availableSubmodules, toRequire);
 ```
-** Optional middleware function **
+### Optional middleware function
 ```javascript
 //you can pass a middleware function to define default parameters to pass to all modules
 var handleArgumentsElse = function (toRequire) { 
