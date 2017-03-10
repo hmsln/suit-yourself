@@ -1,22 +1,29 @@
 'use strict';
 
 module.exports = function () {
-
+	
+	//place arguments in an array that's more convenient to use than the 'arguments' keyword
     var args = Array().slice.call(arguments);
-
+    
+  	//get path of folder containing submodules
 	var path = args[0];   
+    
+    //list of available submodules
     var availableSubmodules = args[1];
     
+    //middleware function to handle arguments to the factory other an array
     var handleArgumentsElse;
     
     if (Object.prototype.toString.call(args[2]) == '[object Function]') {
 	    handleArgumentsElse = args[2];
 	}
 	
+  	//if path or availableSUbmodules is undefined, we can't proceed further: throw error
 	if (path === undefined || availableSubmodules === undefined) {
 		throw new TypeError('Invalid parameters have been passed to module flexible-toolkit');
 	}
 	
+  	//isolate remaining arguments
 	if (handleArgumentsElse === undefined) {
 		var toRequireArgs = args.slice(2);
 	} else {

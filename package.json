@@ -1,25 +1,25 @@
 {
-  "name": "suit-yourself",
-  "version": "1.0.0",
-  "description": "A node.js module that allows you to selectively load and pass parameters to submodules",
-  "keywords": [
-    "submodule",
-    "loader"
-  ],
-  "main": "index.js",
-  "scripts": {
-    "test": "jasmine-node test"
-  },
-  "devDependencies": {
-    "jasmine-node": "^1.14.5"
-  },
-  "engines": {
-    "node": "4.1.2"
-  },
-  "repository": {
-  	"type": "git",
-  	"url": "https://github.com/hmsln/suit-yourself.git"
-  },
-  "author": "Hubert Maslin <hubert.maslin@gmail.com>",
-  "license": "MIT"
+	"name": "suit-yourself",
+  	"version": "1.0.0",
+  	"description": "A node.js module that allows you to selectively load and pass parameters to submodules",
+  	"keywords": [
+    	"submodule",
+    	"loader"
+  	],
+  	"main": "index.js",
+  	"scripts": {
+    	"test": "jasmine-node test"
+  	},
+  	"devDependencies": {
+    	"jasmine-node": "^1.14.5"
+  	},
+  	"engines": {
+    	"node": "^4.1.2"
+  	},
+  	"repository": {
+  		"type": "git",
+  		"url": "https://github.com/hmsln/suit-yourself.git"
+  	},
+  	"author": "Hubert Maslin <hubert.maslin@gmail.com>",
+  	"license": "MIT"
 }
