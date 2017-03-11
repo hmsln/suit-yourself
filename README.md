@@ -13,42 +13,42 @@ var path = __dirname + '/submodules';
 var availableSubmodules = {
 	'submodule1': {},
     'submodule2': {
-    	isFactory: true
+    	isFactory: true//indicates that sumodule2 returns a factory
     }
 };
 
-//submodules to require, with their arguments if applies
-var toRequire = [
-    {
+/*
+object containing information about which submodules are to be required, and what arguments are to be passed to the submodules which return factories
+*/
+var toRequire = {
+	//in 'specific' mode, submodules to require are listed in requireList; see below for 'all' mode
+	requireMode: 'specific',
+	//list of submodules to require, with arguments to pass
+	requireList:[{
        name: 'submodule1'
-    },
-	{
+    }, {
         name: 'submodule2',
-        args: 'argument'
-    }
-];
+        args: 'argument_to_this_submodule'
+    }]
+};
 
 //import the submodules
 var submodules = suitYourself(path, availableSubmodules, toRequire);
-```
-### Optional middleware function
-```javascript
-//you can pass a middleware function to define default parameters to pass to all modules
-var handleArgumentsElse = function (toRequire) { 
-    //here, we want to pass true to all submodules if no toRequire object has been passed
-    if (toRequire.length == 0) {
-        return true;
-    } else {
-        return toRequire;
-    }
-}
-
-//import the submodules
-var submodules = suitYourself(path, availableSubmodules, handleArgumentsElse, toRequire);
 //use the submodules
 //submodules.submodule1...
 //submodules.submodule2...
+```
+### Require all submodules:
+As seen above, submodules can be required one by one, with arguments being specified for each submodule; but you can also require all of them, and pass the same arguments to all which return factories.
 
+To do this, the ```toRequire``` object should have this form:
+```javascript
+var toRequire = {
+	//in 'all' mode, all submodules are required
+	requireMode: 'all',
+	//optional, this value is passed to all the submodules which return factories
+	args: 'argument_to_all_submodules'
+};
 ```
 
 ## Tests

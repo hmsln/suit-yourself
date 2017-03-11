@@ -10,6 +10,9 @@
   	"scripts": {
     	"test": "jasmine-node test"
   	},
+  	"dependencies": {
+  		"custom-error-factory": "x"
+  	},
   	"devDependencies": {
     	"jasmine-node": "^1.14.5"
   	},

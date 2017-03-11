@@ -17,14 +17,17 @@ describe('suit yourself', function () {
   	var argument = 'argument';
   
   	//get submodules
-  	var submodules = suitYourself(path, availableSubmodules, [{
-        	name: 'submodule1'
-    	},
-    	{
-        	name: 'submodule2',
-        	args: argument
-    	}
-    ]);
+  	var submodules = suitYourself(path, availableSubmodules, {
+  		requireMode:'specific',
+  		requireList: [{
+        		name: 'submodule1'
+    		},
+    		{
+        		name: 'submodule2',
+        		args: argument
+    		}
+    	]
+    });
   
 	it('loads specified submodule', function () {
         expect(submodules.submodule1('argument')).toEqual('argument');

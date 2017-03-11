@@ -1,8 +1,15 @@
 'use strict';
 
+var customErrorFactory = require('custom-error-factory');
+
 module.exports = function () {
 	
-	//place arguments in an array that's more convenient to use than the 'arguments' keyword
+	//define custom error
+	var InvalidParametersError = customErrorFactory(TypeError,
+		'Invalid_Parameters_Error',
+		'Invalid parameters have been passed to module suit-yourself');
+		
+	//turns arguments into an actual array for convenience's sake
     var args = Array().slice.call(arguments);
     
   	//get path of folder containing submodules
@@ -10,57 +17,34 @@ module.exports = function () {
     
     //list of available submodules
     var availableSubmodules = args[1];
-    
-    //middleware function to handle arguments to the factory other an array
-    var handleArgumentsElse;
-    
-    if (Object.prototype.toString.call(args[2]) == '[object Function]') {
-	    handleArgumentsElse = args[2];
-	}
+	
+	//isolate remaining arguments
+	var toRequireArgs = args.slice(2);
 	
   	//if path or availableSUbmodules is undefined, we can't proceed further: throw error
-	if (path === undefined || availableSubmodules === undefined) {
-		throw new TypeError('Invalid parameters have been passed to module flexible-toolkit');
-	}
-	
-  	//isolate remaining arguments
-	if (handleArgumentsElse === undefined) {
-		var toRequireArgs = args.slice(2);
-	} else {
-		var toRequireArgs = args.slice(3);
+	if (path === undefined || availableSubmodules === undefined || toRequireArgs === undefined) {
+		throw new InvalidParametersError();
 	}
 	
 	//arguments to pass to submodules
 	var toRequire = [];
-	
-	//check if an array of submodules has been passed
-    if (Object.prototype.toString.call(toRequireArgs[0]) === '[object Array]') {
-    	toRequire = toRequireArgs[0];
-    } else{
-    	/*
-    	else: some arguments other than an array have been passed; use the user-supplied handleArgumentsElse function to parse them and return
-    	appropriate submodules
-    	*/
-        
-        //if no function has been supplied: error
-        if (handleArgumentsElse === undefined) {
-        	throw new Error('');
-        }
-		
-		try {
-			//use user-supplied function to parse arguments
-            var argsToSubmodules = handleArgumentsElse(toRequireArgs);
-			
-			//parsed arguments are to be applied to all submodules
-            for (var name in availableSubmodules) {
-                toRequire.push({name: name, args: argsToSubmodules});
-            }
-		
-        } catch (e) {
-        	//if there's an error in the parsing of arguments other than an array
-    		throw new TypeError('Invalid parameters have been passed');
-        }
-    }
+	console.log(toRequireArgs[0]);
+	//check that t
+    if (Object.prototype.toString.call(toRequireArgs[0]) === '[object Object]') {    
+		//if only some submodules are to be required: store the list passed as argument
+    	if (toRequireArgs[0].requireMode === 'specific') {
+    		toRequire = toRequireArgs[0].requireList;
+    	} else if (toRequireArgs[0].requireMode === 'all') {//if all submodules are to be required
+    		//passed arguments are to be applied to all submodules
+    		for (var name in availableSubmodules) {
+            	toRequire.push({name: name, args: toRequireArgs[0].args});
+        	}
+    	} else {
+    		throw new InvalidParametersError();
+    	}
+    } else {
+		throw new InvalidParametersError();
+	}
     
     //object containing the submodules that are to be returned
     var toReturn = {};
