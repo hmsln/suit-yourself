@@ -28,7 +28,7 @@ module.exports = function () {
 	
 	//arguments to pass to submodules
 	var toRequire = [];
-	console.log(toRequireArgs[0]);
+	
 	//check that t
     if (Object.prototype.toString.call(toRequireArgs[0]) === '[object Object]') {    
 		//if only some submodules are to be required: store the list passed as argument

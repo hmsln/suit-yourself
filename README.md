@@ -2,6 +2,10 @@
 
 ```suit-yourself``` is an open source module that allows you to load submodules selectively from a source folder, and to pass parameters to them.
 
+## Installation
+
+Install with the command ``` npm install suit-yourself```
+
 ## Example
 ```javascript
 var suitYourself = require('suit-yourself');
@@ -38,7 +42,7 @@ var submodules = suitYourself(path, availableSubmodules, toRequire);
 //submodules.submodule1...
 //submodules.submodule2...
 ```
-### Require all submodules:
+#### Require all submodules
 As seen above, submodules can be required one by one, with arguments being specified for each submodule; but you can also require all of them, and pass the same arguments to all which return factories.
 
 To do this, the ```toRequire``` object should have this form:
