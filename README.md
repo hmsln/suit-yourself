@@ -63,5 +63,5 @@ running ```npm install -g jasmine-node```
 You can run the tests with the commands ```jasmine-node test``` or ```npm run test```
 
 ## Contact
-If you have any bugs to report or improvements to suggest you can send me an email
+If you have any bugs to report or improvements to suggest, you can send me an email
 at <hubert.maslin@gmail.com>.
